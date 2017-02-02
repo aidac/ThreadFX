@@ -50,11 +50,5 @@ public class Controller extends Thread {
         if (file != null) {
             countText.setText("the count is: " + cnt.count(file));
         }
-        double progress = 0.0;
-        for (double i = 0.0; i < 100.0; i++) {
-            i = progress;
-            progress++;
-            progressBar.setProgress(progress);
-        }
     }
 }
