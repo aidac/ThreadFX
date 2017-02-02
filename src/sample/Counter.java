@@ -11,7 +11,6 @@ public class Counter extends Thread {
     public int count(File file) {
         int count = 0;
         try {
-            System.out.println("Counting Words");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
@@ -23,8 +22,6 @@ public class Counter extends Thread {
                 }
                 line = br.readLine();
             }
-            System.out.println(count);
-
         } catch (Exception e) {
             System.out.println(e);
         }
