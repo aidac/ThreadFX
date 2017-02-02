@@ -50,7 +50,7 @@ public class Controller {
         for (double i = 0.0; i < 100.0; i++) {
             i = progress;
             progress++;
-            progressBar.setProgress(progress / 10000);
+            progressBar.setProgress(progress);
         }
 
     }
