@@ -16,7 +16,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.PrintWriter;
 
-public class Controller {
+public class Controller extends Thread {
 
     public ProgressBar progressBar;
     public Label headerText;
@@ -43,14 +43,6 @@ public class Controller {
         }
     }
 
-    public void doSomething() {
-        double progress = 0.0;
-        for (double i = 0.0; i < 100.0; i++) {
-            i = progress;
-            progress++;
-            progressBar.setProgress(progress);
-        }
-    }
     public void setCountButtonOnClick(ActionEvent actionEvent) {
         Counter cnt = new Counter();
         FileChooser fileChooser = new FileChooser();
@@ -58,7 +50,11 @@ public class Controller {
         if (file != null) {
             countText.setText("the count is: " + cnt.count(file));
         }
-        timeline = new Timeline(new KeyFrame(Duration.millis(500), ae -> doSomething()));
-        timeline.setCycleCount(Animation.INDEFINITE);
+        double progress = 0.0;
+        for (double i = 0.0; i < 100.0; i++) {
+            i = progress;
+            progress++;
+            progressBar.setProgress(progress);
+        }
     }
 }
