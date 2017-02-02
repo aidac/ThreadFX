@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,6 +10,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.File;
@@ -22,7 +26,7 @@ public class Controller {
     public Button saveButton;
     public Button countButton;
     public Window stage;
-    public Desktop desktop;
+    private Timeline timeline;
 
 
     public void setSaveButtonOnClick(ActionEvent actionEvent) {
@@ -39,6 +43,14 @@ public class Controller {
         }
     }
 
+    public void doSomething() {
+        double progress = 0.0;
+        for (double i = 0.0; i < 100.0; i++) {
+            i = progress;
+            progress++;
+            progressBar.setProgress(progress);
+        }
+    }
     public void setCountButtonOnClick(ActionEvent actionEvent) {
         Counter cnt = new Counter();
         FileChooser fileChooser = new FileChooser();
@@ -46,12 +58,7 @@ public class Controller {
         if (file != null) {
             countText.setText("the count is: " + cnt.count(file));
         }
-        double progress = 0.0;
-        for (double i = 0.0; i < 100.0; i++) {
-            i = progress;
-            progress++;
-            progressBar.setProgress(progress);
-        }
-
+        timeline = new Timeline(new KeyFrame(Duration.millis(500), ae -> doSomething()));
+        timeline.setCycleCount(Animation.INDEFINITE);
     }
 }
