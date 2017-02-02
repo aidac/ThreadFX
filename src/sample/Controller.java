@@ -47,10 +47,11 @@ public class Controller {
             countText.setText("the count is: " + cnt.count(file));
         }
         double progress = 0.0;
-        for (double i = 0.0; i < 1000000.0; i++) {
+        for (double i = 0.0; i < 100.0; i++) {
             i = progress;
             progress++;
+            progressBar.setProgress(progress / 10000);
         }
-        progressBar.setProgress(progress / 10000);
+
     }
 }
